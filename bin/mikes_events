@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/my_first_gem'
+
+MyFirstGem::Cli.new.call 
