@@ -2,18 +2,30 @@ require 'pry'
 class MyFirstGem::Scraper
     
     def self.scrape_months
+        zodiac_signs =
 
-        doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/"))
-
-        results = doc.css('select#month')
-        puts results.count
-
-        results.each do |m|
-           name = m.text
-           MyFirstGem::Month.new(name)
+        ["aquarius",
+         "pisces",
+         "aries",
+         "taurus",
+         "gemini",
+         "cancer",
+         "leo",
+         "virgo",
+         "libra",
+         "scorpio",
+         "sagittarius",
+         "capricorn",]
+         zodiac_urls = zodiac_signs.map do |sign|
+            "https://www.astrology-zodiac-signs.com/zodiac-signs/#{sign}/"
+         end
+        zodiac_paragraphs = zodiac_urls.map do |zodiac_url| 
+            doc = Nokogiri::HTML(open(zodiac_url))
+            p = doc.xpath("//div[@class='add midad']/following-sibling::p")
+            first_paragraph_text = p.first.text 
+            first_paragraph_text
         end
-       # binding.pry
-      
+         zodiac_paragraphs
     end
 
     def self.scrape_information(month)
@@ -21,5 +33,8 @@ class MyFirstGem::Scraper
         MyFirstGem::Info.new("zodiac uninteresting info", month)
         
     end
+
+    
+
 end
 

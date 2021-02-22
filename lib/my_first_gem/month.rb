@@ -1,3 +1,4 @@
+require 'pry'
 class MyFirstGem::Month
     
     @@all = []
@@ -10,9 +11,9 @@ def initialize(name)
     save
 end
     def self.all 
-        MyFirstGem::Scraper.scrape_months if @@all.empty?
+       @@all = MyFirstGem::Scraper.scrape_months if @@all.empty?
         @@all
-        
+        #binding.pry 
     end
 
    

@@ -1,7 +1,4 @@
 class MyFirstGem::Cli 
-
-    require 'pry'
-
       #advertised_month method
         #create a  birth month method
         #create a zodiac sign information for month
@@ -14,11 +11,14 @@ class MyFirstGem::Cli
         puts "To see sign for all zodiacs, enter 'x'two times in the terminal."
         puts ""
         puts "To exit, enter 'exit' twice in the terminal"
+        puts "To see Scorpio Type S"
       advertised_months
-      birth_month
-      user_month
+     #birth_month
+     loop do 
       menu
+     # paragraph
     end
+end
 #next step 
 def menu
 
@@ -27,36 +27,58 @@ def menu
     if input == "x"
         puts "
         »»————-　★　————-««
-        March 21 - April 19, Aries: ♈︎
-        April 20 - May 20 ,Taurus: ♉︎
-        May 21 - June 20, Gemini: ♊︎
-        June 21 - July 22, Cancer: ♋︎
-        July 23 - August 22, Leo: ♌︎
-        August 23 - September 22,Virgo: ♍︎
-        September 23 - October 22,Libra: ♎︎
-        October 23 - November 21,Scorpio: ♏︎
-        November 22 - December 21,Sagittarius: ♐︎
-        December 22 - January 19,Capricorn: ♑︎
-        January 20 - February 18,Aquarius: ♒︎
-        February 19 - March 20, Pisces: ♓︎"
+       1. March 21 - April 19, Aries: ♈︎
+       2. April 20 - May 20 ,Taurus: ♉︎
+       3. May 21 - June 20, Gemini: ♊︎
+       4. June 21 - July 22, Cancer: ♋︎
+       5. July 23 - August 22, Leo: ♌︎
+       6. August 23 - September 22,Virgo: ♍︎
+       7. September 23 - October 22,Libra: ♎︎
+       8. October 23 - November 21,Scorpio: ♏︎
+       9. November 22 - December 21,Sagittarius: ♐︎
+       10. December 22 - January 19,Capricorn: ♑︎
+       11. January 20 - February 18,Aquarius: ♒︎
+       12. February 19 - March 20, Pisces: ♓︎"
         
     elsif input == "exit"
+
        puts goodbye
 
+
+    elsif  input == "s"
+
+     scorpio
+    
+    elsif input == "m"
+       user_month
     else 
 
        invalid_entry
 
     end
 end 
+
     def invalid_entry
+
         puts "Invalid entry, try again"
-        menu 
 end
 
+def scorpio
+
+
+        doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/scorpio/"))
+        words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+        paragraph = words.first.text
+        puts paragraph
+        #binding.pry
+   
+end
+
+
 def goodbye
+
   puts  "Goodbye and come back again please."
-    
+    exit 
 end
     def advertised_months
         #to be scraped 
@@ -77,11 +99,13 @@ end
     end
 #next step 
     def user_month
-        picked_month = gets.strip 
-        give_out_info_for(picked_month) if correct_input(picked_month.to_i, @months)
+        puts "pick a month 1 - 12 "
+        picked_month = gets.strip.to_i
+        give_out_info_for(picked_month) if correct_input(picked_month, @months)
         
     
 end
+
 #next step 
     def correct_input(input, data)
 
@@ -91,17 +115,21 @@ end
 
 #next step
     def give_out_info_for(picked_month)
-        month = @months[picked_month - 1]
-        MyFirstGem::Info.new("zodiac info", month)
-        MyFirstGem::Info.new("zodiac uninteresting info", month)
-       month.get_information
-        puts "Truth about this zodiac #{month.name}"
-        month.information.each.with_index(1) do | placeholder, index|
-            puts "{idex}.#{information.name}"
+        puts "your month is  #{picked_month}"
+        months = MyFirstGem::Month.all
+        puts months[picked_month - 1]
+        
+        
+       # MyFirstGem::Info.new("zodiac info", month)
+       # MyFirstGem::Info.new("zodiac uninteresting info", month)
+     #  month.get_information
+       # puts "Truth about this zodiac #{month.name}"
+        #month.information.each.with_index(1) do | placeholder, index|
+         #   puts "{idex}.#{information.name}"
        # MyFirstGem::Info.all.each do | information |
      
            # puts information.name
            #user_month
-       end
+      # end
     end
     end
