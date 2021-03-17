@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 class MyFirstGem::Scraper
     
     def self.scrape_months

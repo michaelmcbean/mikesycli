@@ -1,3 +1,4 @@
+require 'pry'
 class MyFirstGem::Cli 
       #advertised_month method
         #create a  birth month method
@@ -10,7 +11,7 @@ class MyFirstGem::Cli
         puts ""
         puts "To see sign for all zodiacs, enter 'x' in the terminal."
         puts ""
-        puts "To learn about a random enter 'Random' in the terminal and pick a number from 1-12"
+        puts "To learn about a random enter 'mix' in the terminal and pick a number from 1-12"
         puts ""
         puts "To exit, enter 'exit' twice in the terminal"
         puts "To see a specific sign enter the first two letters of that sign in the terminal."
@@ -18,6 +19,7 @@ class MyFirstGem::Cli
      #birth_month
      loop do 
       menu
+    
      # paragraph
     end
 end
@@ -34,12 +36,12 @@ def menu
        3. May 21 - June 20, Gemini: ♊︎
        4. June 21 - July 22, Cancer: ♋︎
        5. July 23 - August 22, Leo: ♌︎
-       6. August 23 - September 22,Virgo: ♍︎
-       7. September 23 - October 22,Libra: ♎︎
-       8. October 23 - November 21,Scorpio: ♏︎
-       9. November 22 - December 21,Sagittarius: ♐︎
-       10. December 22 - January 19,Capricorn: ♑︎
-       11. January 20 - February 18,Aquarius: ♒︎
+       6. August 23 - September 22, Virgo: ♍︎
+       7. September 23 - October 22, Libra: ♎︎
+       8. October 23 - November 21, Scorpio: ♏︎
+       9. November 22 - December 21, Sagittarius: ♐︎
+       10. December 22 - January 19, Capricorn: ♑︎
+       11. January 20 - February 18, Aquarius: ♒︎
        12. February 19 - March 20, Pisces: ♓︎"
         
     elsif input == "exit"
@@ -47,7 +49,7 @@ def menu
 
     elsif input == "ar"
         aries 
-
+        
     elsif input == "ta"
         taurus
 
@@ -75,7 +77,7 @@ def menu
     elsif input == "ca"
         capricorn
 
-    elsif input == "Random"
+    elsif input == "mix"
        user_month
 
     else 
