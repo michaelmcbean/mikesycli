@@ -8,10 +8,12 @@ class MyFirstGem::Cli
         puts ""
         puts "WELCOME USER!, WELCOME TO THE TRUTH!"
         puts ""
-        puts "To see sign for all zodiacs, enter 'x'two times in the terminal."
+        puts "To see sign for all zodiacs, enter 'x' in the terminal."
+        puts ""
+        puts "To learn about a random enter 'Random' in the terminal and pick a number from 1-12"
         puts ""
         puts "To exit, enter 'exit' twice in the terminal"
-        puts "To see Scorpio Type S"
+        puts "To see a specific sign enter the first two letters of that sign in the terminal."
       advertised_months
      #birth_month
      loop do 
@@ -41,26 +43,126 @@ def menu
        12. February 19 - March 20, Pisces: ♓︎"
         
     elsif input == "exit"
+    puts goodbye
 
-       puts goodbye
+    elsif input == "ar"
+        aries 
 
+    elsif input == "ta"
+        taurus
 
-    elsif  input == "s"
+    elsif input == "ge"
+        gemini
 
+    elsif input == "ca"
+        cancer 
+
+    elsif input == "le"
+        leo
+
+    elsif input == "vi"
+        virgo
+
+    elsif input == "li"
+        libra
+
+    elsif  input == "sc"
      scorpio
-    
-    elsif input == "m"
-       user_month
-    else 
 
+    elsif input == "sa"
+        sagittarius
+    
+    elsif input == "ca"
+        capricorn
+
+    elsif input == "Random"
+       user_month
+
+    else 
        invalid_entry
 
     end
 end 
 
     def invalid_entry
+        puts "Input not valid, please try again"
+end
 
-        puts "Invalid entry, try again"
+def aries
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/aires/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
+end
+
+def taurus
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/taurus/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
+end
+
+def gemini 
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/gemini/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
+end
+
+def cancer
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/cancer/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
+end
+
+def leo
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/leo/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
+end
+
+def virgo
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/virgo/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
+end
+
+def libra
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/libra/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
 end
 
 def scorpio
@@ -74,6 +176,49 @@ def scorpio
    
 end
 
+def sagittarius 
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/sagittarius/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
+end
+
+def capricorn
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/capricorn/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
+end
+
+def aquarius
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/aquarius/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
+end
+
+def pisces
+
+
+    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/pisces/"))
+    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+    paragraph = words.first.text
+    puts paragraph
+    #binding.pry
+
+end
 
 def goodbye
 
