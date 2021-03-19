@@ -15,7 +15,7 @@ class MyFirstGem::Scraper
          "libra",
          "scorpio",
          "sagittarius",
-         "capricorn",]
+         "capricorn"]
          zodiac_urls = zodiac_signs.map do |sign|
             "https://www.astrology-zodiac-signs.com/zodiac-signs/#{sign}/"
          end
@@ -28,11 +28,12 @@ class MyFirstGem::Scraper
          zodiac_paragraphs
     end
 
-    def self.scrape_information(month)
-        MyFirstGem::Info.new("zodiac info", month)
-        MyFirstGem::Info.new("zodiac uninteresting info", month)
-        
+    def self.scrape_information(sign)
+        doc = Nokogiri::HTML(open(sign.url))
+        words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+        sign.paragraph = words.first.text
     end
+
 
     
 

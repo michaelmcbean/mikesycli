@@ -6,28 +6,48 @@ class MyFirstGem::Cli
         #list zodiac sign method 
         #create something for the user, create a user method 
     def call
+    
         puts ""
         puts "WELCOME USER!, WELCOME TO THE TRUTH!"
         puts ""
         puts "To see sign for all zodiacs, enter 'x' in the terminal."
         puts ""
-        puts "To learn about a random enter 'mix' in the terminal and pick a number from 1-12"
-        puts ""
         puts "To exit, enter 'exit' twice in the terminal"
-        puts "To see a specific sign enter the first two letters of that sign in the terminal."
-      advertised_months
-     #birth_month
-     loop do 
-      menu
+        puts "To see a specific sign enter the full name of that sign in the terminal."
+      	
+      #birth_month
+     	loop do 
+      	
+        menu
     
-     # paragraph
+     	# paragraph
     end
 end
 #next step 
 def menu
 
     input = gets.strip.downcase
+	
+    # "scraper" will be a new Scraper object
+    scraper = Scraper.new
 
+    # This will be the list of paragraphs that we will compare against
+    months = scraper.scrape_months
+  
+  	signs = 
+      ["aquarius",
+        "pisces",
+        "aries",
+        "taurus",
+        "gemini",
+        "cancer",
+        "leo",
+        "virgo",
+        "libra",
+        "scorpio",
+        "sagittarius",
+        "capricorn"]
+  
     if input == "x"
         puts "
         »»————-　★　————-««
@@ -47,184 +67,32 @@ def menu
     elsif input == "exit"
     puts goodbye
 
-    elsif input == "ar"
-        aries 
-        
-    elsif input == "ta"
-        taurus
-
-    elsif input == "ge"
-        gemini
-
-    elsif input == "ca"
-        cancer 
-
-    elsif input == "le"
-        leo
-
-    elsif input == "vi"
-        virgo
-
-    elsif input == "li"
-        libra
-
-    elsif  input == "sc"
-     scorpio
-
-    elsif input == "sa"
-        sagittarius
-    
-    elsif input == "ca"
-        capricorn
-
-    elsif input == "mix"
-       user_month
-
+    elsif signs.include?(input)
+        # determine if that sign has been scraped yet
+        #if so, display the information
+        #if not, scrape first, then display information
+        #need a way to be able to tell if a sign object has already had a scrape done to add the info to the object
+        #MyFirstGem::Scraper.scrape_information(sign) if it has not yet been scraped
+     	puts scraper.scrape_information(input)
     else 
        invalid_entry
-
     end
 end 
 
-    def invalid_entry
-        puts "Input not valid, please try again"
+def invalid_entry
+    puts "Input not valid, please try again"
 end
-
-def aries
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/aires/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
+  
+def valid_sign(input)
+	# determine if that sign has been scraped yet
+  
+	MyFirstGem::Signs.all.find{|sign| sign.name[0..2].downcase == input}
 
 end
 
-def taurus
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/taurus/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
-
-end
-
-def gemini 
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/gemini/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
-
-end
-
-def cancer
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/cancer/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
-
-end
-
-def leo
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/leo/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
-
-end
-
-def virgo
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/virgo/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
-
-end
-
-def libra
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/libra/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
-
-end
-
-def scorpio
-
-
-        doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/scorpio/"))
-        words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-        paragraph = words.first.text
-        puts paragraph
-        #binding.pry
-   
-end
-
-def sagittarius 
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/sagittarius/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
-
-end
-
-def capricorn
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/capricorn/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
-
-end
-
-def aquarius
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/aquarius/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
-
-end
-
-def pisces
-
-
-    doc = Nokogiri::HTML(open("https://www.astrology-zodiac-signs.com/zodiac-signs/pisces/"))
-    words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-    paragraph = words.first.text
-    puts paragraph
-    #binding.pry
-
-end
 
 def goodbye
-
-  puts  "Goodbye and come back again please."
+  	puts  "Goodbye and come back again please."
     exit 
 end
     def advertised_months
@@ -279,4 +147,4 @@ end
            #user_month
       # end
     end
-    end
+end
