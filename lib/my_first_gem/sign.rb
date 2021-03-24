@@ -1,6 +1,5 @@
 # require_relative "../my_first_gem"
 class MyFirstGem::Sign
-    include MyFirstGem
     attr_accessor :name, :paragraph, :url
 
     @@all = []
@@ -10,7 +9,7 @@ class MyFirstGem::Sign
 
     def initialize(name)
         @name = name
-        @url = "https://www.astrology-zodiac-signs.com/zodiac-signs/#{name}"
+        @url = "https://www.astrology-zodiac-signs.com/zodiac-signs/#{name}/"
         @@all << self
     end
 

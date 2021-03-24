@@ -1,0 +1,2 @@
+When someone inputs a number between 1 and 12 instead of the sign name, it should still find the sign object and check if it has been scraped.
+scrape it if not, and then print the paragraph either way

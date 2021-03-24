@@ -1,7 +1,6 @@
-# require 'pry'
 class MyFirstGem::Scraper
-    
-    def self.scrape_months
+
+    def scrape_months
         zodiac_signs =
 
         ["aquarius",
@@ -28,14 +27,32 @@ class MyFirstGem::Scraper
          zodiac_paragraphs
     end
 
-    def self.scrape_information(sign)
-        doc = Nokogiri::HTML(open(sign.url))
-        words = doc.xpath("//div[@class='add midad']/following-sibling::p")
-        sign.paragraph = words.first.text
+    def scrape_information(sign)
+        if sign.is_a?(String)
+          	doc = Nokogiri::HTML(open(sign.url))
+          	words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+          	sign.paragraph = words.first.text
+        else
+          	zodiac_signs =
+              ["aquarius",
+               "pisces",
+               "aries",
+               "taurus",
+               "gemini",
+               "cancer",
+               "leo",
+               "virgo",
+               "libra",
+               "scorpio",
+               "sagittarius",
+               "capricorn"]
+          
+        	doc = Nokogiri::HTML(open(
+              "https://www.astrology-zodiac-signs.com/zodiac-signs/#{zodiac_signs[sign - 1]}/"
+            ))
+          	words = doc.xpath("//div[@class='add midad']/following-sibling::p")
+            sign = MyFirstGem::Sign.all.find{|astro_sign| astro_sign.name.downcase == zodiac_signs[sign - 1]}
+          	sign.paragraph = words.first.text
+        end
     end
-
-
-    
-
 end
-
